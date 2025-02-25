@@ -5,6 +5,7 @@ import authRoutes from './routes/authRoutes.js';
 import productRoutes from './routes/productRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
 import razorpayRoutes from './routes/razorpayRoutes.js';
+import userRoutes from './routes/usersRoutes.js';
 import setupSwagger from './swagger.js';
 import cors from 'cors';
 
@@ -25,6 +26,7 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/product', productRoutes);
 app.use('/api/v1/cart', cartRoutes);
 app.use('/api/v1/razorpay', razorpayRoutes);
+app.use('/api/v1/users', userRoutes);
 
 connectionToDb();
 

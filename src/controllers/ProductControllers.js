@@ -16,13 +16,23 @@ export const createProduct = async (req, res) => {
 }
 
 export const getAllProducts = async (req, res) => {
-    try{
-       const products = await Product.find();
-       return res.status(200).json({success: true, products:products})
-    }catch(error){
-        return res.status(500).json({success: false , error:error.message})
+    try {
+        const products = await Product.find();
+        const count = await Product.countDocuments();
+
+        return res.status(200).json({
+            success: true,
+            count,
+            products
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            error: error.message
+        });
     }
-}
+};
+
 
 export const getSingleProduct = async (req, res) => {
     try{
