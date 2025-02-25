@@ -4,7 +4,7 @@
     {
       "src": "src/app.js",
       "use": "@vercel/node",
-      "congig" : {
+      "config" : {
         "includeFiles": ["./dist/**", "./node_modules/swagger-ui-dist/**"]
       }
     }
