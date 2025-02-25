@@ -13,7 +13,7 @@ const app = express();
 
 // Middlewares
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: ['http://localhost:3000',"https://eshop-custom-backend.vercel.app"],
     methods: 'GET,POST,PUT,DELETE',
     credentials: true,
   }));
