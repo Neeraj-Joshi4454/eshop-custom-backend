@@ -23,43 +23,15 @@ export const createPayment = async (req, res) => {
       
         if(!order) return res.status(400).json({success:false, error: "Failed to create order."})
 
-        return res.status(201).json({ success: true, order});
+        // return res.status(201).json({ success: true, order});
+        return res.status(201).json({ 
+            success: true, 
+            orderId: order.id, 
+            amount: order.amount, 
+            currency: order.currency 
+          });
     }catch(error){
         return res.status(500).json({success:false, error:error.message})
     }
 }
 
-
-
-export const verifyPayment = async (req, res) => {
-    try {
-        const { razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body;
-
-        // Generate HMAC SHA256 hash
-        const secret = process.env.RAZORPAY_KEY_SECRET;
-        const generatedSignature = crypto
-            .createHmac("sha256", secret)
-            .update(razorpay_order_id + "|" + razorpay_payment_id)
-            .digest("hex");
-
-        if (generatedSignature !== razorpay_signature) {
-            return res.status(400).json({ success: false, error: "Invalid signature" });
-        }
-
-        // ✅ Save Order in MongoDB
-        const order = await Order.create({
-            userId: req.user.id, // Assuming user is authenticated
-            razorpay_order_id,
-            razorpay_payment_id,
-            status: "Paid",
-            items: req.body.items,  // Add ordered items
-            amount: req.body.amount,
-            currency: "INR"
-        });
-
-        return res.status(200).json({ success: true, message: "Payment verified", order });
-    } catch (error) {
-        console.error("Error verifying payment:", error);
-        return res.status(500).json({ success: false, error: "Server error" });
-    }
-};
