@@ -1,13 +1,3 @@
-// import express from 'express';
-// import { createUser, loginUser } from '../controllers/authControllers.js';
-// const Router = express();
-
-// Router.post('/register',createUser);
-// Router.post('/login', loginUser);
-
-// export default Router;
-
-
 import express from 'express';
 import { createUser, loginUser } from '../controllers/authControllers.js';
 

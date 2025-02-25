@@ -1,17 +1,3 @@
-// import express from 'express';
-// import { createProduct, deleteProduct, getAllProducts, getSingleProduct, updateProduct } from '../controllers/ProductControllers.js';
-// import Upload from '../storage/index.js';
-// import authenticate from '../middleware/authMiddleware.js';
-// const Router = express();
-
-// Router.post('/',authenticate,Upload.single("image"), createProduct );
-// Router.get('/',authenticate, getAllProducts);
-// Router.get('/:id',authenticate,getSingleProduct);
-// Router.put('/:id',authenticate, Upload.single("image"), updateProduct);
-// Router.delete('/:id',authenticate, deleteProduct);
-
-// export default Router;
-
 import express from 'express';
 import { createProduct, deleteProduct, getAllProducts, getSingleProduct, updateProduct } from '../controllers/ProductControllers.js';
 import Upload from '../storage/index.js';
