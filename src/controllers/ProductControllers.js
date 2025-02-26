@@ -72,7 +72,7 @@ export const deleteProduct = async (req, res) => {
         if(!product) return res.status(404).json({message : "Product not found."})
         
         const key = product.image.split('.amazonaws.com/')[1];
-        await s3.send(new DeleteObjectCommand({Bucket: process.env.S3_BUCKET_NAME, Key: key}));
+        await s3.send(new DeleteObjectCommand({Bucket: process.env.API_S3_BUCKET_NAME, Key: key}));
 
         await Product.deleteOne();
         res.status(200).json({success: true, message : "Product Deleted Successfully."})
